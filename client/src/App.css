@@ -1,0 +1,450 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:500,400,300&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500&display=swap");
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-animation: autofill 0s forwards;
+    animation: autofill 0s forwards;
+}
+@keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+@-webkit-keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+    font-size: 18px;
+}
+.material-icons.md-24 {
+    font-size: 24px;
+}
+.material-icons.md-36 {
+    font-size: 36px;
+}
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    transition: 0.3s ease-in-out;
+}
+
+html,
+body,
+#root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background: #90a4ae url(bg.png) center top repeat;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 96px;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+}
+
+h2 {
+    font-size: 60px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+h3 {
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 0px;
+}
+
+h4 {
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+}
+
+h5 {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+b {
+    font-weight: 500;
+}
+
+i {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
+
+.tag {
+    font-style: normal;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+    color: #c17900;
+    padding: 5px 7px;
+    margin: 5px 10px;
+    background: rgba(0, 0, 0, 0.1);
+    background: rgba(251, 192, 45, 0.2);
+    border-radius: 2px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+button,
+input[type="submit"],
+.buttonLink {
+    width: auto;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    background: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2196f3;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.buttonLink:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+button:focus,
+input[type="submit"]:focus {
+    outline: none;
+}
+
+button:disabled,
+input[type="submit"]:disabled {
+    cursor: default;
+    background: none;
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.fab button {
+    padding: 10px;
+    background-color: #2196f3;
+    color: #fff;
+    border-radius: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fab button:hover {
+    background-color: #1976d2;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.remove {
+    color: #f44336;
+}
+
+input[type="number"] {
+    text-align: right;
+}
+
+input[type="search"],
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 15px;
+    margin: 10px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #f5f5f5;
+    border-radius: 4px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+    background: #eee;
+    outline: none;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 2px solid #2196f3;
+}
+
+input:invalid + span:after {
+    content: "✖";
+    padding-left: 5px;
+}
+
+.App {
+    position: fixed;
+    right: 0;
+    z-index: 1;
+    width: calc(100vw - 80px);
+    height: 100%;
+}
+
+.mainCard {
+    max-height: 100%;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 70px;
+    padding-bottom: 50px;
+    color: rgba(0, 0, 0, 0.54);
+    text-align: center;
+    font-size: 18px;
+}
+
+.empty i {
+    margin: 20px;
+}
+
+.tipo {
+    grid-area: tipo;
+    position: relative;
+    display: flex;
+}
+
+.tipo form {
+    background: #fff;
+    width: 100%;
+}
+
+.tipo > div {
+    width: 100%;
+}
+
+.tipo button {
+    border-radius: 100%;
+}
+
+.tipo button[type="submit"] i {
+    color: #2196f3;
+}
+
+.tipo #newFabricante input,
+.tipo #newModelo input {
+    text-transform: capitalize;
+}
+
+.tipo #newFabricante > div,
+.tipo #newModelo div,
+.tipo #fabricante div,
+.tipo #modelo div {
+    display: flex;
+    align-items: center;
+}
+
+.tipo #newFabricante > div > div {
+    flex-grow: 1;
+}
+
+.tipo #newFabricante.new ~ #fabricante,
+.tipo #newFabricante.new ~ #modelo,
+.tipo #newModelo.new ~ #modelo {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.tipo #newFabricante.new,
+.tipo #newModelo.new {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media screen and (min-width: 1340px) {
+    .headBar {
+        height: 102px;
+    }
+
+    #searchCard {
+        right: 35px;
+        height: auto;
+        max-height: calc(100vh - 70px);
+        border-radius: 5px;
+    }
+}
+
+#Login {
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    max-height: 100vh;
+    width: 100vw;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(
+        324deg,
+        rgba(141, 45, 251, 0.1) 0%,
+        rgba(33, 196, 243, 0.1) 100%
+    );
+    text-align: center;
+}
+
+.loading {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.loading h3 {
+    display: inline-block;
+    padding: 30px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.loading {
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.spinner {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 100%;
+    -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+    animation: sk-scaleout 1s infinite ease-in-out;
+}
+
+@keyframes sk-scaleout {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.snackbar {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: 4;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+    min-width: 200px;
+    min-height: 45px;
+    background: #424242;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    transform: translateY(100%);
+}
+
+.snackbar--show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+}

@@ -1,0 +1,157 @@
+#PresupuestosView {
+    padding: 35px;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+}
+
+#presupuestos {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "listaHead mensajeHead"
+        "lista mensaje";
+    justify-items: stretch;
+    align-items: stretch;
+    max-width: 450px;
+    transition: 0.8s ease-in-out;
+}
+
+#presupuestos #listaHead {
+    grid-area: listaHead;
+    position: relative;
+    padding: 20px;
+    background: #f5f5f5;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#presupuestos #listaHead h6 {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#listaHead .fab {
+    position: absolute;
+    right: 0;
+    bottom: -50%;
+    z-index: 500;
+    padding: 0 25px;
+}
+
+#presupuestos #lista {
+    grid-area: lista;
+    min-width: 450px;
+    max-width: 450px;
+    padding-top: 20px;
+}
+
+#presupuestos #mensajeHead {
+    grid-area: mensajeHead;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 600px;
+    padding: 0 10px;
+    background: #f5f5f5;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#presupuestos #mensajeHead > button {
+    border-radius: 100%;
+}
+
+#presupuestos #mensajeHead .enviar {
+    display: inline-block;
+    justify-self: end;
+    max-width: 335px;
+    padding: 0;
+    margin: 10px;
+    border-radius: 5px;
+    background: #fff;
+    text-align: right;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+#presupuestos #mensajeHead .enviar input[type="email"] {
+    width: 250px;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+#presupuestos #mensajeHead .enviar button {
+    color: rgba(255, 255, 255, 1);
+    background: #2196f3;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#presupuestos #mensajeHead .enviar button:hover {
+    background-color: #1976d2;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+#presupuestos #mensaje {
+    grid-area: mensaje;
+    overflow-y: scroll;
+    max-width: 670px;
+    max-height: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#presupuestos .presupuesto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+#presupuestos .presupuesto:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#presupuestos .presupuesto li {
+    display: inline-block;
+    padding: 10px;
+}
+
+#presupuestos .presupuesto li:first-child {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#presupuestos .presupuesto li span {
+    margin: 0 10px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#presupuestos .presupuesto button {
+    border-radius: 100%;
+}
+
+#patente {
+    grid-area: patente;
+}
+
+#patente input {
+    text-transform: uppercase;
+}
+
+#km {
+    grid-area: km;
+}
+
+#reparacion {
+    grid-area: reparacion;
+}
+
+#reparacion input {
+    text-transform: capitalize;
+}
+
+#labor {
+    grid-area: labor;
+}

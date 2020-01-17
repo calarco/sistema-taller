@@ -1,0 +1,427 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.overlay--show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dialogs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    visibility: hidden;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    transform: scale(0.9);
+}
+
+.dialogs--show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.dialog {
+    background: #fff;
+    min-width: 300px;
+    max-width: 500px;
+    max-height: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
+    pointer-events: all;
+    text-align: left;
+}
+
+.dialog__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 35px;
+}
+
+.dialog__head h5 {
+    margin: 0;
+}
+
+.info {
+    display: inline-block;
+    grid-area: info;
+    text-align: right;
+}
+
+.info i {
+    margin-right: 10px;
+}
+
+.dialog .body {
+    grid-area: body;
+    margin: 25px 30px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.dialog__buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+}
+
+.dialog__total {
+    flex-grow: 1;
+    padding: 0px 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.dialog__total b {
+    font-size: 18px;
+    color: #4caf50;
+    margin-left: 10px;
+}
+
+.dialog > ul {
+    display: grid;
+    justify-items: stretch;
+    align-items: center;
+    gap: 10px 30px;
+    padding: 0px 30px;
+}
+
+.dialog span {
+    margin: 0 10px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.dialog .error span {
+    color: #ff0000;
+}
+
+.dialog .error input {
+    border-radius: 4px 4px 0 0;
+    border-bottom: 2px solid red;
+}
+
+#addCliente ul {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "nombre apellido"
+        "telefono1 telefono2"
+        "direccion empresa";
+    justify-items: stretch;
+    align-items: end;
+}
+
+#addCliente #nombre {
+    grid-area: nombre;
+}
+
+#addCliente #nombre input {
+    text-transform: capitalize;
+}
+
+#addCliente #apellido {
+    grid-area: apellido;
+}
+
+#addCliente #apellido input {
+    text-transform: capitalize;
+}
+
+#addCliente #telefono1 {
+    grid-area: telefono1;
+}
+
+#addCliente #telefono2 {
+    grid-area: telefono2;
+}
+
+#addCliente #direccion {
+    grid-area: direccion;
+}
+
+#addCliente #direccion input {
+    text-transform: capitalize;
+}
+
+#addCliente .empresa {
+    grid-area: empresa;
+}
+
+#addVehiculo ul {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "patente year combustible"
+        "tipo tipo tipo";
+}
+
+#addVehiculo #patente {
+    grid-area: patente;
+}
+
+#addVehiculo #patente input {
+    text-transform: uppercase;
+}
+
+#addVehiculo #patente p {
+    position: absolute;
+    font-size: 12px;
+    margin: 0;
+    color: rgba(0, 0, 0, 0);
+}
+
+#addVehiculo #patente.error p {
+    color: rgba(255, 0, 0, 1);
+}
+
+#addVehiculo #year {
+    grid-area: year;
+}
+
+#addVehiculo #combustible {
+    grid-area: combustible;
+}
+
+#addVehiculo #vin {
+    margin-right: 20px;
+}
+
+#addVehiculo #vin input {
+    text-transform: uppercase;
+}
+
+#editVehiculo input[type="search"] {
+    text-transform: capitalize;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 0;
+}
+
+#editVehiculo input[type="search"]:focus {
+    border-bottom: 2px solid #2196f3;
+}
+
+#editVehiculo #datalist {
+    background: #fff;
+    max-height: 300px;
+    padding: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    overflow-y: auto;
+}
+
+#editVehiculo #datalist .empty {
+    padding: 20px 0;
+}
+
+#editVehiculo #datalist li {
+    width: 100%;
+}
+
+#editVehiculo #datalist li input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+#editVehiculo #datalist li label {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    cursor: pointer;
+    border-top: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+#editVehiculo #datalist li label:hover {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#editVehiculo #datalist li input:checked ~ label {
+    background: #2196f3;
+    color: #fff;
+    box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+#addReparacion ul {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+        "fecha km ultimo"
+        "reparacion reparacion labor"
+        "repuestos repuestos costo";
+}
+
+#addReparacion #fecha {
+    grid-area: fecha;
+}
+
+#addReparacion #ultimo {
+    grid-area: ultimo;
+    text-align: right;
+}
+
+#addReparacion #ultimo p {
+    color: #f9a825;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#addReparacion #km {
+    grid-area: km;
+}
+
+#addReparacion #reparacion {
+    grid-area: reparacion;
+}
+
+#addReparacion #reparacion input {
+    text-transform: capitalize;
+}
+
+#addReparacion #repuestos {
+    grid-area: repuestos;
+}
+
+#addReparacion #repuestos input {
+    text-transform: capitalize;
+}
+
+#addReparacion #costo {
+    grid-area: costo;
+}
+
+#addReparacion #labor {
+    grid-area: labor;
+}
+
+#addTurno ul {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title fecha"
+        "motivo motivo"
+        "tipo tipo";
+}
+
+#addTurno #fecha {
+    grid-area: fecha;
+}
+
+#addTurno #motivo {
+    grid-area: motivo;
+}
+
+#addTurno #motivo input {
+    text-transform: capitalize;
+}
+
+#addPresupuesto.dialog {
+    min-width: 700px;
+    max-width: 800px;
+}
+
+#addPresupuesto ul {
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title title title"
+        "patente tipo km"
+        "reparacion reparacion labor"
+        "repuestos repuestos repuestos"
+        "total buttons buttons";
+    min-width: 700px;
+    max-width: 800px;
+}
+
+#addPresupuesto #repuestos {
+    grid-area: repuestos;
+    margin: 20px 0;
+    max-height: 100%;
+    overflow-y: auto;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#addPresupuesto #repuestos .empty {
+    padding: 20px 30px;
+}
+
+#addPresupuesto #repuestos ul {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "cantidad repuesto precio add";
+    justify-items: stretch;
+    align-items: center;
+}
+
+#addPresupuesto #repuestos #columnHeader {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#addPresupuesto #repuestos #columnHeader li {
+    text-align: left;
+}
+
+#addPresupuesto #repuestos li {
+    display: inline-block;
+    padding: 20px 30px;
+    text-align: right;
+}
+
+#addPresupuesto #repuestos li:nth-child(2) {
+    text-align: left;
+}
+
+#addPresupuesto #repuestos input {
+    margin: 0;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    text-transform: capitalize;
+}
+
+#addPresupuesto #repuestos #addRepuesto {
+    padding: 0;
+    background: #f5f5f5;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#addPresupuesto #repuestos #addRepuesto li {
+    padding: 0;
+}
+
+#addPresupuesto #repuestos #addRepuesto button i {
+    color: #2196f3;
+}

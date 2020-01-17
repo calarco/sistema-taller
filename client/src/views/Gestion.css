@@ -1,0 +1,475 @@
+#SearchView {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-height: 100vh;
+}
+
+#searchCard {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "buscar vehiculoInfo"
+        "busqueda reparaciones";
+    justify-items: stretch;
+    align-items: stretch;
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    background: #e0e0e0;
+    transition: 0.8s ease-in-out;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.buscar {
+    grid-area: buscar;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px 12px 30px;
+    background: #fff;
+    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.buscar input {
+    width: 100%;
+    max-width: 400px;
+    padding: 13px;
+    margin: 0 20px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.buscar input:hover,
+.buscar input:focus {
+    background: #eee;
+}
+
+.buscar .fab {
+    position: absolute;
+    right: 0;
+    bottom: -50%;
+    z-index: 500;
+    padding: 0 25px;
+}
+
+.busqueda {
+    grid-area: busqueda;
+    position: relative;
+    min-width: 600px;
+    max-width: 600px;
+    padding-bottom: 70px;
+    overflow-y: auto;
+    background: #fff;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.busqueda__head {
+    position: sticky;
+    top: 0;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 20px 30px;
+    padding-right: 120px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.busqueda__head i {
+    margin-right: 20px;
+}
+
+.cliente {
+    border-top: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+.cliente.activo,
+.cliente.activo:hover {
+    background: #eee;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+    cursor: initial;
+}
+
+.cliente.activo ul:hover {
+    cursor: pointer;
+}
+
+.cliente .clienteDiv,
+.vehiculo {
+    display: flex;
+}
+
+.cliente .clienteDiv li:nth-child(2) {
+    flex: 1 100%;
+    max-width: 230px;
+}
+
+.cliente:hover,
+.vehiculo:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cliente span,
+.vehiculo span {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.cliente .clienteDiv p {
+    margin: 5px 0;
+}
+
+.cliente .clienteDiv p i {
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.cliente .clienteDiv > ul,
+.vehiculo > ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 20px;
+}
+
+.cliente .clienteDiv > ul > li:first-child > i,
+.vehiculo > ul > li > i {
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 100%;
+}
+
+.cliente .clienteDiv > ul:hover li:first-child i {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.vehiculo > ul:hover li:first-child i {
+    margin-right: 10px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.cliente.activo .subList {
+    max-height: 900px;
+}
+
+.cliente .subList {
+    max-height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.cliente .subList .empty {
+    padding: 0;
+}
+
+.cliente .subList .vehiculos {
+    margin: 0 15px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.cliente .subList .vehiculos .vehiculo {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cliente .subList .vehiculos .vehiculo:first-child {
+    border: none;
+}
+
+.vehiculo > ul li:nth-child(2) {
+    flex: 1 100%;
+    max-width: 125px;
+}
+
+.vehiculo > ul li:nth-child(3) {
+    flex: 2 100%;
+}
+
+.options {
+    grid-area: options;
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    padding: 10px;
+}
+
+.options button {
+    border-radius: 100%;
+}
+
+.options button:focus + ul,
+.options ul:hover {
+    opacity: 1;
+    visibility: visible;
+}
+
+.options ul {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    min-width: 150px;
+    padding: 10px 0;
+    margin: 10px 10px;
+    background: #fff;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.options ul li {
+    display: list-item;
+    width: auto;
+    padding: 20px;
+}
+
+.options ul li:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.options ul li i {
+    margin-right: 15px;
+}
+
+#vehiculoInfo {
+    grid-area: vehiculoInfo;
+    display: flex;
+    align-items: center;
+    min-width: 600px;
+    padding: 0 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#vehiculoInfo button {
+    border-radius: 100%;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#vehiculoInfo > li > div {
+    display: inline-block;
+    position: relative;
+}
+
+#vehiculoInfo > li > div button:focus + ul,
+#vehiculoInfo > li > div ul:hover {
+    opacity: 1;
+    visibility: visible;
+}
+
+#vehiculoInfo > li > div ul {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    min-width: 150px;
+    background: #fff;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#vehiculoInfo > li > div ul li {
+    display: list-item;
+    width: auto;
+    padding: 15px 10px;
+}
+
+#vehiculoInfo > li {
+    display: inline-block;
+    text-align: center;
+    padding: 0 10px 0 0;
+}
+
+#vehiculoInfo li:nth-child(2) p {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#vehiculoInfo li:nth-child(3) {
+    flex-grow: 1;
+}
+
+#vehiculoInfo p {
+    margin: 5px;
+}
+
+#vehiculoInfo b {
+    font-size: 18px;
+}
+
+#vehiculoInfo .tag {
+    margin-right: 0;
+}
+
+#vehiculoInfo span {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#reparaciones {
+    grid-area: reparaciones;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#reparaciones .reparacion {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+        "fecha fecha remove"
+        "titulo titulo titulo"
+        "repuestos repuestos repuestos"
+        "costo labor total";
+    justify-items: stretch;
+    align-items: center;
+    background: #fff;
+    margin: 20px 50px;
+    border-radius: 4px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    min-width: 400px;
+    max-width: 550px;
+}
+
+#reparaciones .reparacion span {
+    margin-right: 15px;
+}
+
+#reparaciones .reparacion .fecha {
+    grid-area: fecha;
+    padding: 10px 30px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#reparaciones .reparacion .fecha i {
+    font-style: normal;
+    font-weight: 500;
+    color: #f9a825;
+    margin: 0 10px;
+    vertical-align: top;
+}
+
+#reparaciones .reparacion .remove {
+    grid-area: remove;
+    text-align: right;
+}
+
+#reparaciones .reparacion .remove button {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 100%;
+}
+
+#reparaciones .reparacion .titulo {
+    grid-area: titulo;
+    padding: 10px 30px;
+    margin: 0;
+}
+
+#reparaciones .reparacion .repuestos {
+    grid-area: repuestos;
+    padding: 20px 30px;
+    margin: 0;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#reparaciones .reparacion .costo {
+    grid-area: costo;
+    padding: 20px 30px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#reparaciones .reparacion .labor {
+    grid-area: labor;
+    padding: 20px 0px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#reparaciones .reparacion .total {
+    grid-area: total;
+    padding: 20px 30px;
+    text-align: right;
+    font-size: 18px;
+}
+
+#reparaciones .reparacion b {
+    color: #4caf50;
+}
+
+.add {
+    padding: 20px;
+    text-align: center;
+}
+
+.add .material-icons {
+    margin-right: 10px;
+    color: #2196f3;
+}
+
+.add button {
+    border: 1px solid #2196f3;
+}
+
+#reparaciones .add {
+    position: sticky;
+    bottom: 0;
+    padding-top: 10px;
+}
+
+#reparaciones .add .material-icons {
+    color: rgba(255, 255, 255, 1);
+}
+
+#reparaciones .add button {
+    color: rgba(255, 255, 255, 1);
+    background: #2196f3;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+#reparaciones .add button:hover {
+    background-color: #1976d2;
+    border: 1px solid #1976d2;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 1340px) {
+    #SearchView {
+        padding: 35px;
+        background: none;
+    }
+
+    #searchCard {
+        height: auto;
+        border-radius: 5px;
+    }
+}
