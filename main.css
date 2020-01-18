@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500&display=swap");
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+    font-size: 18px;
+}
+.material-icons.md-24 {
+    font-size: 24px;
+}
+.material-icons.md-36 {
+    font-size: 36px;
+}
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+.material-icons.md-light.md-inactive {
+    color: rgba(255, 255, 255, 0.3);
+}
+* {
+    box-sizing: border-box;
+    transition: 0.25s ease-in-out;
+}
+
+html,
+body,
+#root {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background: #212121 url(bg.png) center top repeat;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 96px;
+    font-weight: 300;
+    letter-spacing: -1.5px;
+}
+
+h2 {
+    font-size: 60px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+h3 {
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 0px;
+}
+
+h4 {
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+}
+
+h5 {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+b {
+    font-weight: 500;
+}
+
+i {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+}
+
+.tag {
+    font-style: normal;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.54);
+    color: #c17900;
+    padding: 5px 7px;
+    margin: 5px 10px;
+    background: rgba(0, 0, 0, 0.1);
+    background: rgba(251, 192, 45, 0.2);
+    border-radius: 2px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+button,
+input[type="submit"],
+.buttonLink {
+    width: auto;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    background: none;
+    text-transform: uppercase;
+    font-size: 14;
+    font-weight: 500;
+    color: #2196f3;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.buttonLink:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+button:focus,
+input[type="submit"]:focus {
+    outline: none;
+}
+
+button:disabled,
+input[type="submit"]:disabled {
+    cursor: default;
+    background: none;
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.remove {
+    color: #f44336;
+}
+
+input[type="number"] {
+    text-align: right;
+}
+
+input[type="search"],
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 15px;
+    margin: 10px;
+    outline: none;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+    background: rgba(0, 0, 0, 0.2);
+    outline: none;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 2px solid #2196f3;
+}
+
+input:invalid + span:after {
+    content: "✖";
+    padding-left: 5px;
+}
+
+#HomeView {
+    display: grid;
+    align-content: center;
+    height: 100%;
+    max-height: 100vh;
+    width: 100vw;
+    padding: 50px;
+    background: linear-gradient(
+        324deg,
+        rgba(141, 45, 251, 0.1) 0%,
+        rgba(33, 196, 243, 0.1) 100%
+    );
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+
+#HomeView h1 {
+    color: rgba(255, 255, 255, 1);
+}
+
+#HomeView h1 i {
+    font-size: 80px;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #0000ff;
+}
+
+#access {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 14;
+    font-weight: 500;
+    background: #2196f3;
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#access:hover {
+    background-color: #1976d2;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+}

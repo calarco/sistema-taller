@@ -368,6 +368,14 @@ input:invalid + span:after {
     text-align: center;
 }
 
+#Login .dialog {
+    border: none;
+    background: none;
+    border-radius: 12px;
+    box-shadow: -12px -12px 12px 0 rgba(255, 255, 255, 0.1),
+        12px 12px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
 .loading {
     position: absolute;
     height: 100%;
