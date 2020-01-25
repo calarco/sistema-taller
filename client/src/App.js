@@ -80,12 +80,15 @@ function App() {
         } else {
             setLoading(false);
         }
-        loadCars();
         feathersClient
             .service("api/fabricantes")
             .on("created", data => loadCars());
         feathersClient.service("api/modelos").on("created", data => loadCars());
     }, []);
+
+    useEffect(() => {
+        loadCars();
+    }, [user]);
 
     useEffect(() => {
         if (snackbar !== "") {

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import feathersClient from "../../feathersClient";
 import Forms from "../components/Forms";
 import validate from "./ValidationPresupuesto";
-import Modelo from "../components/Modelo";
-import Fabricante from "../components/Fabricante";
+import Auto from "../components/Auto";
 
 function AddPresupuesto({
     close,
@@ -15,12 +14,6 @@ function AddPresupuesto({
     setActivo
 }) {
     const [repuestos, setRepuestos] = useState([]);
-    const [current, setCurrent] = useState({
-        total: 0,
-        limit: 0,
-        skip: 0,
-        data: [{}]
-    });
 
     const {
         inputs,
@@ -29,47 +22,6 @@ function AddPresupuesto({
         handleInputChange,
         handleSubmit
     } = Forms(submit, validate, dialog);
-
-    useEffect(() => {
-        if (!inputs.fabricanteId) {
-            if (fabricantes.data.length) {
-                setInputs(inputs => ({
-                    ...inputs,
-                    fabricanteId: fabricantes.data[0].id
-                }));
-            } else {
-                setInputs(inputs => ({
-                    ...inputs,
-                    fabricanteId: "nuevo"
-                }));
-            }
-        }
-    }, [fabricantes]);
-
-    useEffect(() => {
-        if (inputs.fabricanteId !== "nuevo") {
-            const newModelos = modelos.data.filter(
-                e => e.fabricanteId === parseInt(inputs.fabricanteId, 10)
-            );
-            setCurrent({
-                total: 0,
-                limit: 0,
-                skip: 0,
-                data: newModelos
-            });
-            if (newModelos.length) {
-                setInputs(inputs => ({
-                    ...inputs,
-                    modeloId: newModelos[0].id
-                }));
-            } else {
-                setInputs(inputs => ({
-                    ...inputs,
-                    modeloId: "nuevo"
-                }));
-            }
-        }
-    }, [inputs.fabricanteId, modelos]);
 
     function submit() {
         feathersClient
@@ -136,100 +88,20 @@ function AddPresupuesto({
                         type="text"
                         name="patente"
                         placeholder="-"
-                        value={inputs.patente}
+                        value={inputs.patente || ""}
                         onChange={handleInputChange}
                         autoComplete="off"
                         required
                     />
                 </li>
-                <li className="tipo">
-                    <div id="fabricante">
-                        <span>Fabricante</span>
-                        <div>
-                            <select
-                                name="fabricanteId"
-                                form="AddPresupuestoForm"
-                                value={inputs.fabricanteId}
-                                onChange={handleInputChange}
-                                id="fabricantes"
-                            >
-                                {fabricantes.data.map(aFabricante => (
-                                    <option
-                                        key={aFabricante.id}
-                                        value={aFabricante.id}
-                                    >
-                                        {aFabricante.nombre}
-                                    </option>
-                                ))}
-                            </select>
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setInputs(inputs => ({
-                                        ...inputs,
-                                        fabricanteId: "nuevo"
-                                    }));
-                                }}
-                            >
-                                <i className="material-icons md-dark md-18">
-                                    add
-                                </i>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="modelo">
-                        <span>Modelo</span>
-                        <div>
-                            <select
-                                name="modeloId"
-                                form="AddPresupuestoForm"
-                                value={inputs.modeloId}
-                                onChange={handleInputChange}
-                                id="modelos"
-                            >
-                                {current.data.map(aModelo => (
-                                    <option
-                                        key={aModelo.id || 0}
-                                        value={aModelo.id}
-                                    >
-                                        {aModelo.nombre}
-                                    </option>
-                                ))}
-                            </select>
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setInputs(inputs => ({
-                                        ...inputs,
-                                        modeloId: "nuevo"
-                                    }));
-                                }}
-                            >
-                                <i className="material-icons md-dark md-18">
-                                    add
-                                </i>
-                            </button>
-                        </div>
-                    </div>
-                    {inputs.fabricanteId === "nuevo" ? (
-                        <Fabricante
-                            setTemps={setInputs}
-                            fabricantes={fabricantes}
-                            dialog={dialog}
-                            setSnackbar={setSnackbar}
-                        />
-                    ) : inputs.modeloId === "nuevo" ? (
-                        <Modelo
-                            temps={inputs}
-                            setTemps={setInputs}
-                            current={current}
-                            dialog={dialog}
-                            setSnackbar={setSnackbar}
-                        />
-                    ) : (
-                        undefined
-                    )}
-                </li>
+                <Auto
+                    dialog={dialog}
+                    setSnackbar={setSnackbar}
+                    fabricantes={fabricantes}
+                    modelos={modelos}
+                    inputs={inputs}
+                    setInputs={setInputs}
+                />
                 <li id="km">
                     <span>Kilometros</span>
                     <input

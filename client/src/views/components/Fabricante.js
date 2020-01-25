@@ -51,7 +51,6 @@ function Fabricante({ setTemps, fabricantes, dialog, setSnackbar }) {
             noValidate
         >
             <span>{errors.fabricante || "Nuevo fabricante"}</span>
-
             <div>
                 <button
                     type="button"

@@ -34,16 +34,6 @@ function GestionView({
     const [loading, setLoading] = useState(true);
     const [busqueda, setBusqueda] = useState({ search: "" });
 
-    const updateSearch = text => {
-        if (text === undefined) {
-            setBusqueda({ search: busqueda.search });
-        } else if (text === false) {
-            setBusqueda({ search: "" });
-        } else {
-            setBusqueda({ search: text });
-        }
-    };
-
     useEffect(() => {
         setLoading(true);
         if (!busqueda.search) {
@@ -116,6 +106,17 @@ function GestionView({
     }, [busqueda]);
 
     useEffect(() => {
+        const updateSearch = text => {
+            if (text === undefined) {
+                setBusqueda(busqueda => ({
+                    ...busqueda
+                }));
+            } else if (text === false) {
+                setBusqueda({ search: "" });
+            } else {
+                setBusqueda({ search: text });
+            }
+        };
         feathersClient
             .service("api/clientes")
             .on("created", data => updateSearch(false));
@@ -138,7 +139,9 @@ function GestionView({
 
     const handleInputChange = event => {
         event.persist();
-        updateSearch(event.target.value);
+        setBusqueda({
+            search: event.target.value
+        });
         setActivo(activo => ({
             ...activo,
             lista: 0
