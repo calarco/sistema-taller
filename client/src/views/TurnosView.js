@@ -27,6 +27,7 @@ function TurnosView({ setDialog, fabricantes, modelos }) {
             })
             .then(data => {
                 setTurnos(data);
+                setLoading(false);
             })
             .catch(error => {
                 console.error(error);
@@ -34,11 +35,7 @@ function TurnosView({ setDialog, fabricantes, modelos }) {
     }
 
     useEffect(() => {
-        (async function makeAsync() {
-            setLoading(true);
-            await loadTurnos();
-            setLoading(false);
-        })();
+        loadTurnos();
         feathersClient
             .service("api/turnos")
             .on("created", data => loadTurnos());

@@ -32,7 +32,7 @@ function PresupuestosView({
                 query: {
                     $limit: 50,
                     $sort: {
-                        createdAt: 1
+                        createdAt: -1
                     }
                 }
             })

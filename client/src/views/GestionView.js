@@ -3,7 +3,7 @@ import feathersClient from "../feathersClient";
 import "./Gestion.css";
 import Cliente from "./components-gestion/Cliente";
 import Vehiculo from "./components-gestion/Vehiculo";
-import Reparacion from "./components-gestion/Reparacion";
+import Reparaciones from "./components-gestion/Reparaciones";
 
 function GestionView({
     dialog,
@@ -20,12 +20,6 @@ function GestionView({
         data: []
     });
     const [vehiculos, setVehiculos] = useState({
-        total: 0,
-        limit: 0,
-        skip: 0,
-        data: []
-    });
-    const [reparaciones, setReparaciones] = useState({
         total: 0,
         limit: 0,
         skip: 0,
@@ -148,35 +142,12 @@ function GestionView({
         }));
     };
 
-    useEffect(() => {
-        if (activo.id) {
-            feathersClient
-                .service("api/reparaciones")
-                .find({
-                    query: {
-                        vehiculoId: activo.id,
-                        $limit: 100,
-                        $sort: {
-                            createdAt: -1
-                        }
-                    }
-                })
-                .then(data => {
-                    setReparaciones(data);
-                })
-                .catch(error => {
-                    console.log("error", error);
-                });
-        }
-    }, [activo]);
-
     return (
         <div id="SearchView" className="App">
             <div
-                id="searchCard"
-                style={{
-                    maxWidth: activo.id && "1260px"
-                }}
+                className={
+                    activo.id ? "searchCard searchCard--active" : "searchCard"
+                }
             >
                 <form autoComplete="off" className="buscar">
                     <i className="material-icons md-dark md-24">search</i>
@@ -270,80 +241,11 @@ function GestionView({
                         undefined
                     )}
                 </div>
-                <ul id="vehiculoInfo">
-                    <li>
-                        <button
-                            onClick={() => {
-                                setActivo({ ...activo, id: "" });
-                            }}
-                        >
-                            <i className="material-icons md-dark md-24">
-                                arrow_back
-                            </i>
-                        </button>
-                    </li>
-                    <li>
-                        <b>{activo.patente}</b>
-                        <div>
-                            <button>
-                                <i className="material-icons md-dark md-18">
-                                    info
-                                </i>
-                            </button>
-                            <ul>
-                                <li>
-                                    {activo.vin ||
-                                        "No se especificó numero de chasis"}
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <p>{activo.auto}</p>
-                        <span>{activo.year}</span>
-                        <i className="tag">{activo.combustible}</i>
-                    </li>
-                    <li className="info">
-                        <i className="material-icons md-dark md-24">person</i>
-                        {activo.nombre} {activo.apellido}
-                    </li>
-                </ul>
-                <div id="reparaciones">
-                    {reparaciones.data.length ? (
-                        reparaciones.data.map(aReparacion => (
-                            <Reparacion
-                                key={aReparacion.id}
-                                reparacion={aReparacion}
-                                setDialog={setDialog}
-                            />
-                        ))
-                    ) : (
-                        <div className="empty">
-                            <i className="material-icons md-dark md-inactive md-48">
-                                build
-                            </i>
-                            <h6>Aún no hay reparaciones</h6>
-                        </div>
-                    )}
-                    <div className="add">
-                        <button
-                            onClick={() => {
-                                setDialog({
-                                    tipo: "addReparacion",
-                                    lista: activo.lista,
-                                    id: activo.id,
-                                    patente: activo.patente,
-                                    km:
-                                        reparaciones.data.length &&
-                                        reparaciones.data[0].km
-                                });
-                            }}
-                        >
-                            <i className="material-icons md-dark md-18">add</i>{" "}
-                            Nueva Reparacion
-                        </button>
-                    </div>
-                </div>
+                <Reparaciones
+                    setDialog={setDialog}
+                    activo={activo}
+                    setActivo={setActivo}
+                />
             </div>
         </div>
     );

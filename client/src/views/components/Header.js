@@ -10,7 +10,6 @@ function Header() {
             <div>
                 <div className="header__logo">
                     <img src={logo} alt="logo" />
-                    <span>Calarco WEB</span>
                 </div>
                 <div className="links">
                     <NavLink

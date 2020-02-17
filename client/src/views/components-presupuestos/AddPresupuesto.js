@@ -51,7 +51,7 @@ function AddPresupuesto({
         const newRepuestos = [
             ...repuestos,
             {
-                cantidad: inputs.cantidad,
+                cantidad: inputs.cantidad || "1",
                 repuesto: capitalize(inputs.repuesto),
                 precio: parseInt(inputs.precio, 10) || "0"
             }
@@ -174,8 +174,8 @@ function AddPresupuesto({
                                 min="000001"
                                 max="999999"
                                 name="cantidad"
-                                placeholder="-"
-                                value={inputs.cantidad}
+                                placeholder="1"
+                                value={inputs.cantidad | "1"}
                                 onChange={handleInputChange}
                             />
                         </li>
@@ -184,7 +184,7 @@ function AddPresupuesto({
                                 type="text"
                                 name="repuesto"
                                 placeholder="Repuesto"
-                                value={inputs.repuesto}
+                                value={inputs.repuesto || ""}
                                 onChange={handleInputChange}
                                 autoComplete="off"
                                 required

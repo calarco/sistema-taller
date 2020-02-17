@@ -30,7 +30,7 @@ function Dialogs({
     };
 
     return (
-        <div>
+        <>
             <div
                 id="overlay"
                 className={dialog.tipo ? "overlay overlay--show" : "overlay"}
@@ -137,7 +137,7 @@ function Dialogs({
                     />
                 )}
             </div>
-        </div>
+        </>
     );
 }
 

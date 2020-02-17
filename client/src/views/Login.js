@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import feathersClient from "../feathersClient";
-import { Link } from "react-router-dom";
 
 function Login({ user, setUser }) {
     const [inputs, setInputs] = useState({
@@ -51,6 +50,7 @@ function Login({ user, setUser }) {
                             name="user"
                             value={inputs.user}
                             onChange={handleInputChange}
+                            autoComplete="username"
                         />
                     </li>
                     <li>
@@ -60,6 +60,7 @@ function Login({ user, setUser }) {
                             name="password"
                             value={inputs.password}
                             onChange={handleInputChange}
+                            autoComplete="current-password"
                         />
                     </li>
                 </ul>
@@ -69,10 +70,6 @@ function Login({ user, setUser }) {
                     ) : (
                         undefined
                     )}
-
-                    <Link to="/" className="buttonLink">
-                        Cancelar
-                    </Link>
                     <input
                         type="submit"
                         value="Ingresar"

@@ -29,7 +29,7 @@ function AddCliente({ close, dialog, setSnackbar, setActivo }) {
                         ? inputs.telefono1 + " " + inputs.telefono2
                         : inputs.telefono1,
                     direccion: capitalize(inputs.direccion),
-                    empresa: inputs.empresa,
+                    empresa: inputs.empresa || "",
                     updatedAt: Date()
                 })
                 .then(data => {
@@ -50,7 +50,7 @@ function AddCliente({ close, dialog, setSnackbar, setActivo }) {
                         ? inputs.telefono1 + " " + inputs.telefono2
                         : inputs.telefono1,
                     direccion: capitalize(inputs.direccion),
-                    empresa: inputs.empresa,
+                    empresa: inputs.empresa || "",
                     createdAt: Date(),
                     updatedAt: Date()
                 })

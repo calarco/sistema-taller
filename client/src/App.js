@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./App.css";
 import feathersClient from "./feathersClient";
 import Login from "./views/Login";
@@ -107,59 +108,79 @@ function App() {
         <AuthContext.Provider value={{ user, setUser }}>
             <Router>
                 {loading ? (
-                    <div>
+                    <>
                         <div className="headBar"></div>
                         <div className="loading">
                             <div className="spinner"></div>
                         </div>
-                    </div>
+                    </>
                 ) : user ? (
-                    <div>
+                    <>
                         <Header />
                         <div className="headBar"></div>
-                        <Switch>
-                            <Route
-                                exact
-                                path="/"
-                                render={props => (
-                                    <GestionView
-                                        {...props}
-                                        dialog={dialog}
-                                        setDialog={setDialog}
-                                        activo={activo}
-                                        setActivo={setActivo}
-                                        fabricantes={fabricantes}
-                                        modelos={modelos}
-                                    />
-                                )}
-                            />
-                            <Route
-                                path="/turnos"
-                                render={props => (
-                                    <TurnosView
-                                        {...props}
-                                        setDialog={setDialog}
-                                        fabricantes={fabricantes}
-                                        modelos={modelos}
-                                    />
-                                )}
-                            />
-                            <Route
-                                path="/presupuestos"
-                                render={props => (
-                                    <PresupuestosView
-                                        {...props}
-                                        user={user.email}
-                                        setDialog={setDialog}
-                                        setSnackbar={setSnackbar}
-                                        activo={activo}
-                                        setActivo={setActivo}
-                                        fabricantes={fabricantes}
-                                        modelos={modelos}
-                                    />
-                                )}
-                            />
-                        </Switch>
+                        <Route
+                            render={({ location }) => (
+                                <TransitionGroup>
+                                    <CSSTransition
+                                        key={location.pathname}
+                                        classNames="fade"
+                                        timeout={600}
+                                    >
+                                        <Switch location={location}>
+                                            <Route
+                                                exact
+                                                path="/"
+                                                render={props => (
+                                                    <GestionView
+                                                        {...props}
+                                                        dialog={dialog}
+                                                        setDialog={setDialog}
+                                                        activo={activo}
+                                                        setActivo={setActivo}
+                                                        fabricantes={
+                                                            fabricantes
+                                                        }
+                                                        modelos={modelos}
+                                                    />
+                                                )}
+                                            />
+                                            <Route
+                                                path="/turnos"
+                                                render={props => (
+                                                    <TurnosView
+                                                        {...props}
+                                                        setDialog={setDialog}
+                                                        fabricantes={
+                                                            fabricantes
+                                                        }
+                                                        modelos={modelos}
+                                                    />
+                                                )}
+                                            />
+                                            <Route
+                                                path="/presupuestos"
+                                                render={props => (
+                                                    <PresupuestosView
+                                                        {...props}
+                                                        user={user.email}
+                                                        setDialog={setDialog}
+                                                        setSnackbar={
+                                                            setSnackbar
+                                                        }
+                                                        activo={activo}
+                                                        setActivo={setActivo}
+                                                        fabricantes={
+                                                            fabricantes
+                                                        }
+                                                        modelos={modelos}
+                                                    />
+                                                )}
+                                            />
+                                        </Switch>
+                                    </CSSTransition>
+                                </TransitionGroup>
+                            )}
+                        />
                         <Dialogs
                             dialog={dialog}
                             setDialog={setDialog}
@@ -179,7 +200,7 @@ function App() {
                         >
                             {snackbar}
                         </div>
-                    </div>
+                    </>
                 ) : (
                     <Login user={user} setUser={setUser} />
                 )}

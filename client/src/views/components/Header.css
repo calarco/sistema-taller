@@ -5,13 +5,11 @@
     height: 100%;
     max-width: 80px;
     overflow: hidden;
-    background-color: #f5f5f5;
     color: rgba(0, 0, 0, 0.54);
-    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .header:hover {
-    max-width: 500px;
+    max-width: 250px;
 }
 
 .header > div:first-child {
@@ -27,7 +25,6 @@
     height: 102px;
     width: 100%;
     padding-top: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .header__logo img {
@@ -39,32 +36,41 @@
 
 .header .links {
     flex-grow: 1;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header__link {
     display: block;
-    padding: 20px 25px;
-    border-left: 5px solid rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0.54);
+    padding: 20px 0px;
+    color: rgba(255, 255, 255, 1);
     font-weight: 500;
+    border-left: 0px solid #455a64;
 }
 
-.header__link--active {
-    border-left: 5px solid #2196f3;
-    color: #2196f3;
+.header__link .md-dark {
+    color: #263238;
+    margin: 0 27px;
 }
 
 .header__link--active .md-dark {
-    color: #2196f3;
+    color: #fdd835;
 }
 
 .header__link:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #455a64;
 }
 
-.header__link i {
-    margin-right: 30px;
+.header__link span {
+    font-weight: 400;
+    opacity: 0;
+    padding: 7px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin-left: 0px;
+}
+
+.header:hover .header__link span {
+    opacity: 1;
+    margin-left: 10px;
 }
 
 .header__logout {
@@ -81,6 +87,7 @@
     bottom: 0;
     width: 100%;
     font-size: 14px;
+    max-width: 80px;
     text-align: center;
     padding-bottom: 35px;
     color: rgba(0, 0, 0, 0.3);
@@ -88,9 +95,11 @@
 
 .headBar {
     position: fixed;
+    right: 0;
     z-index: 0;
-    width: 100%;
+    width: calc(100vw - 80px);
     background: #b0bec5;
     height: 102px;
+    border-radius: 0 0 0 5px;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }

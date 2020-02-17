@@ -5,7 +5,7 @@
     max-height: 100vh;
 }
 
-#searchCard {
+.searchCard {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
@@ -22,6 +22,12 @@
     background: #e0e0e0;
     transition: 0.8s ease-in-out;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px 8px 8px 8px;
+}
+
+.searchCard--active {
+    max-width: 1260px;
+    border-radius: 8px 0 0 8px;
 }
 
 .buscar {
@@ -32,6 +38,7 @@
     padding: 12px 20px 12px 30px;
     background: #fff;
     box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0 5px 0 0;
 }
 
 .buscar input {
@@ -69,6 +76,7 @@
     overflow-y: auto;
     background: #fff;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 5px 0;
 }
 
 .busqueda__head {
@@ -79,7 +87,7 @@
     align-items: center;
     justify-content: space-between;
     margin: 0;
-    padding: 20px 30px;
+    padding: 10px 30px;
     padding-right: 120px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.54);
@@ -253,14 +261,15 @@
 
 #vehiculoInfo {
     grid-area: vehiculoInfo;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
     align-items: center;
     min-width: 600px;
     padding: 0 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#vehiculoInfo button {
+#vehiculoInfo .back {
     border-radius: 100%;
     color: rgba(0, 0, 0, 0.54);
 }
@@ -297,22 +306,16 @@
 }
 
 #vehiculoInfo > li {
-    display: inline-block;
     text-align: center;
-    padding: 0 10px 0 0;
 }
 
-#vehiculoInfo li:nth-child(2) p {
+#vehiculoInfo > li:nth-child(2) p {
     font-size: 12px;
     color: rgba(0, 0, 0, 0.54);
 }
 
-#vehiculoInfo li:nth-child(3) {
-    flex-grow: 1;
-}
-
 #vehiculoInfo p {
-    margin: 5px;
+    margin: 5px 0;
 }
 
 #vehiculoInfo b {
@@ -325,6 +328,54 @@
 
 #vehiculoInfo span {
     color: rgba(0, 0, 0, 0.6);
+}
+
+.info {
+    position: relative;
+}
+
+.info button {
+    text-transform: none;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.info button:focus {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.info button:focus + ul,
+.info ul:hover {
+    opacity: 1;
+    visibility: visible;
+    top: 80%;
+}
+
+.info ul {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 65%;
+    right: 0;
+    z-index: 1000;
+    min-width: 300px;
+    padding: 10px 0;
+    margin: 10px 10px;
+    background: #fff;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.info ul li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    width: auto;
+    padding: 20px;
+}
+
+.info ul li i {
+    margin-right: 15px;
 }
 
 #reparaciones {
@@ -468,8 +519,12 @@
         background: none;
     }
 
-    #searchCard {
+    .searchCard {
         height: auto;
-        border-radius: 5px;
+    }
+
+    .searchCard--active {
+        max-width: 1260px;
+        border-radius: 8px 8px 8px 8px;
     }
 }

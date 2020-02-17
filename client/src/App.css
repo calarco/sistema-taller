@@ -82,6 +82,11 @@ body,
     margin: 0;
     height: 100%;
     background: #90a4ae url(bg.png) center top repeat;
+    background: radial-gradient(
+        circle,
+        rgba(176, 190, 197, 1) 0%,
+        rgba(144, 164, 174, 1) 100%
+    );
     font-family: "Roboto", sans-serif;
     font-weight: 400;
 }
@@ -359,21 +364,50 @@ input:invalid + span:after {
     display: grid;
     justify-items: center;
     align-items: center;
-    padding: 50px;
+    padding: 50px; /* 
     background: linear-gradient(
         324deg,
         rgba(141, 45, 251, 0.1) 0%,
         rgba(33, 196, 243, 0.1) 100%
+    ); */
+    background: radial-gradient(
+        circle,
+        rgba(176, 190, 197, 1) 0%,
+        rgba(144, 164, 174, 1) 100%
     );
     text-align: center;
 }
 
 #Login .dialog {
     border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
     background: none;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: -12px -12px 12px 0 rgba(255, 255, 255, 0.1),
         12px 12px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+#Login .dialog input[type="text"],
+#Login .dialog input[type="password"] {
+    border-radius: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset -6px -6px 12px 0 rgba(255, 255, 255, 0.1),
+        inset 6px 6px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+#Login .dialog input[type="submit"] {
+    color: rgba(255, 255, 255, 1);
+    background: #2196f3;
+    border: 1px solid #2196f3;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+#Login .dialog input[type="submit"]:hover {
+    background-color: #1976d2;
+    border: 1px solid #1976d2;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .loading {
@@ -455,4 +489,17 @@ input:invalid + span:after {
     opacity: 1;
     visibility: visible;
     transform: translateY(0%);
+}
+
+.fade-enter,
+.fade-exit {
+    transition: 0.5s ease opacity;
+}
+.fade-enter,
+.fade-exit-active {
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    z-index: 2;
 }
